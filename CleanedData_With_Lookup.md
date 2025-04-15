@@ -1,4 +1,4 @@
-# **Step-by-Step Instructions for Cleaning Data and Creating a Pivot Table in Excel**
+## **Step-by-Step Instructions for Cleaning Data and Creating a Pivot Table in Excel**
 
 #### 1. **Select All Table Cells**
 - Go to your worksheet with data.
