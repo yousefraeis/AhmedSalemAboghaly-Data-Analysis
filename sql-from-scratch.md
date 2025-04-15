@@ -79,7 +79,7 @@ VALUES (N'samy', 'ahmed', 23);
 
 ---
 
-## **Working with Tables in SQL Server**
+# **Working with Tables in SQL Server**
 
 #### **1. Create a New Database**
 
