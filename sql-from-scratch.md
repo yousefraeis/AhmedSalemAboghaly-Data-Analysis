@@ -79,5 +79,91 @@ VALUES (N'samy', 'ahmed', 23);
 
 ---
 
+## **Working with Tables in SQL Server**
 
+#### **1. Create a New Database**
+
+```sql
+CREATE DATABASE NewCompany;
+```
+
+#### **2. Use the New Database**
+
+```sql
+USE NewCompany;
+GO
+```
+
+---
+
+### **3. Create a Table**
+
+```sql
+CREATE TABLE Employs (
+    firstN CHAR(100) NOT NULL,
+    lastN CHAR(100) NOT NULL,
+    age INT
+);
+```
+
+---
+
+### **4. Edit Table – Add a New Column**
+
+```sql
+ALTER TABLE Employs 
+ADD email CHAR(100);
+```
+
+> Adds a new column called `email` to the `Employs` table.
+
+---
+
+### **5. View All Data in a Table**
+
+```sql
+SELECT * FROM Employs;
+```
+
+---
+
+### **6. Delete a Table**
+
+```sql
+DROP TABLE Employs;
+```
+
+> Be careful — this permanently deletes the table and its data.
+
+---
+
+### **7. Query Data from the Table**
+
+```sql
+-- Select all rows and columns
+SELECT * FROM Employs;
+
+-- Select just the first names
+SELECT firstN FROM Employs;
+
+-- Select first names and ages
+SELECT firstN, age FROM Employs;
+
+-- Select rows where first name is 'mnal'
+SELECT * FROM Employs
+WHERE firstN = 'mnal';
+```
+
+> Use single quotes `' '` for string values in SQL.
+
+---
+
+### **8. Delete a Specific Record**
+
+```sql
+DELETE FROM Employs
+WHERE firstN = 'mnal';
+```
+
+---
 
