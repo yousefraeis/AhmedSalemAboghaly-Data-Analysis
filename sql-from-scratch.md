@@ -1,4 +1,4 @@
-**Lecture 1: Working with Databases in SQL**
+## **Lecture 1: Working with Databases in SQL**
 
 #### **Using a Different Database**
 If you want to switch to another database, run the following commands:
