@@ -1,4 +1,4 @@
-## **Lecture 1: Working with Databases in SQL**
+# **Lecture 1: Working with Databases in SQL**
 
 #### **Using a Different Database**
 If you want to switch to another database, run the following commands:
@@ -167,3 +167,157 @@ WHERE firstN = 'mnal';
 
 ---
 
+# **Lecture 3: Working with Data in SQL**
+
+### ✅ **Select All Data from a Table**
+
+```sql
+USE NewCompany;
+GO
+
+SELECT * FROM Company;
+```
+
+---
+
+### ✍️ **How to Add Data to a Table**
+
+```sql
+INSERT INTO Company (firstName, lastName, age, salary)
+VALUES ('Amira', 'Yousef', 20, 10122);
+```
+
+---
+
+### 🗑️ **How to Delete Specific Rows**
+
+```sql
+DELETE FROM Company
+WHERE firstName = 'Loay';
+```
+
+---
+
+### ✏️ **How to Update / Edit Data**
+
+```sql
+-- Change lastName where it's 'Yousef'
+UPDATE Company 
+SET lastName = 'Ahmed' 
+WHERE lastName = 'Yousef';
+
+-- Update age where firstName AND lastName match
+UPDATE Company 
+SET age = 23 
+WHERE firstName = 'alaa' AND lastName = 'Magar';
+```
+
+> You can use logical operators like `AND` / `OR` in the `WHERE` clause.
+
+---
+
+### 🔎 **Select Specific Columns**
+
+```sql
+SELECT firstName FROM Company;
+
+SELECT firstName, age 
+FROM Company 
+WHERE firstName = 'Sameh';
+```
+
+---
+
+### 🙅‍♂️ **Select Without Repetition**
+
+```sql
+SELECT DISTINCT * 
+FROM Company;
+```
+
+> `DISTINCT` doesn't remove data — it just hides duplicates in the result.
+
+---
+
+### 🔢 **Count Entries**
+
+```sql
+-- Count all first names
+SELECT COUNT(firstName) 
+FROM Company;
+
+-- Count distinct first names (no repeats)
+SELECT COUNT(DISTINCT firstName) 
+FROM Company;
+```
+
+---
+
+### 💰 **Aggregate Functions (Salary Column)**
+
+```sql
+-- Total Salary
+SELECT SUM(salary) 
+FROM Company;
+
+-- Average Salary
+SELECT AVG(salary) 
+FROM Company;
+
+-- Maximum Salary
+SELECT MAX(salary) 
+FROM Company;
+
+-- Minimum Salary
+SELECT MIN(salary) 
+FROM Company;
+```
+
+---
+
+### 🎯 **Using `IN`, `LIKE`, and `BETWEEN`**
+
+```sql
+-- Match specific values
+SELECT * 
+FROM Company 
+WHERE firstName IN ('alaa', 'Yousef');
+
+-- Pattern Matching with LIKE
+SELECT * FROM Company WHERE firstName LIKE 'a%';   -- starts with 'a'
+SELECT * FROM Company WHERE firstName LIKE '%a';   -- ends with 'a'
+SELECT * FROM Company WHERE firstName LIKE '%a%';  -- contains 'a'
+
+-- Range filter
+SELECT * 
+FROM Company 
+WHERE age BETWEEN 23 AND 26;
+```
+
+---
+
+### 📊 **Sorting Data**
+
+```sql
+-- Order by Salary ascending (low to high)
+SELECT * 
+FROM Company 
+WHERE age > 23 
+ORDER BY salary ASC;
+
+-- Descending order
+SELECT * 
+FROM Company 
+ORDER BY salary DESC;
+```
+
+---
+
+### 📝 **SQL Comments**
+
+```sql
+-- This is a single-line comment
+
+/* This is 
+   a multi-line comment */
+```
