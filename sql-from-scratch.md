@@ -35,9 +35,7 @@ DROP DATABASE newcompany;
 ```
 
 
-## **Lecture 2: **
-
----
+## Lecture 2: 
 
 
 ### **Check if a Database Supports Arabic Characters**
