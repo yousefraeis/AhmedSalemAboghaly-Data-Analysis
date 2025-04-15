@@ -34,7 +34,11 @@ To delete the `newcompany` database:
 DROP DATABASE newcompany;
 ```
 
+
 ## **Lecture 2: **
+
+---
+
 
 ### **Check if a Database Supports Arabic Characters**
 
