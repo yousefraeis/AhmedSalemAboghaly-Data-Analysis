@@ -387,3 +387,48 @@ FROM Salary AS S
 JOIN Company AS C
     ON S.Code = C.id_code;
 ```
+---
+# Final Project: Hotel Revenue Analysis
+```sql
+-- Combine hotel data from 2018, 2019, and 2020
+WITH hotels AS (
+    SELECT * FROM dbo.[2018$]
+    UNION ALL
+    SELECT * FROM dbo.[2019$]
+    UNION ALL
+    SELECT * FROM dbo.[2020$]
+)
+
+-- Calculate revenue per hotel per year
+SELECT 
+    arrival_date_year,
+    hotel,
+    ROUND(SUM((stays_in_week_nights + stays_in_weekend_nights) * adr), 3) AS Revenue
+FROM hotels
+GROUP BY arrival_date_year, hotel;
+
+-- Join hotel data with meal and market segment info
+SELECT *
+FROM hotels
+LEFT JOIN dbo.meal_cost$ 
+    ON hotels.meal = dbo.meal_cost$.meal
+LEFT JOIN dbo.market_segment$ 
+    ON hotels.market_segment = dbo.market_segment$.market_segment;
+
+-- Final Revenue Analysis with Meal Cost
+SELECT 
+    arrival_date_year,
+    hotel,
+    ROUND(SUM((stays_in_week_nights + stays_in_weekend_nights) * adr), 3) AS Revenue,
+    dbo.meal_cost$.Cost
+FROM hotels
+LEFT JOIN dbo.meal_cost$ 
+    ON hotels.meal = dbo.meal_cost$.meal
+LEFT JOIN dbo.market_segment$ 
+    ON hotels.market_segment = dbo.market_segment$.market_segment
+GROUP BY arrival_date_year, hotel, dbo.meal_cost$.Cost;
+
+```
+
+
+
