@@ -322,7 +322,7 @@ ORDER BY salary DESC;
    a multi-line comment */
 ```
 ---
-# **Lecture 4 **
+# Lecture 4 
 
 ```sql
 -- Create a new database
