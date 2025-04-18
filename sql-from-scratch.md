@@ -321,3 +321,69 @@ ORDER BY salary DESC;
 /* This is 
    a multi-line comment */
 ```
+---
+# **Lecture 4 **
+
+```sql
+-- Create a new database
+CREATE DATABASE NewDatabase;
+GO
+
+-- Use the newly created database
+USE NewDatabase;
+GO
+
+/* 
+   -- Setting a Primary Key in SSMS:
+   1. Open the table in Design view.
+   2. Select the column (e.g., CustomerId).
+   3. Right-click and choose "Set Primary Key".
+   4. In the Column Properties pane, scroll to "Identity Specification".
+   5. Set "Is Identity" to Yes to auto-increment.
+*/
+
+-- Creating Customers and Orders tables (Option 1: Without identity)
+CREATE TABLE Customers (
+    CustomersId INT NOT NULL,  -- Primary Key
+    CustName CHAR(100),
+    Email CHAR(100)
+);
+
+CREATE TABLE Orders (
+    OrderId INT NOT NULL,      -- Primary Key
+    OrderDate DATETIME,
+    CustomersId INT
+);
+
+-- Alternative way (Option 2: With Identity and Primary Key set inline)
+CREATE TABLE Customers (
+    CustomersId INT NOT NULL PRIMARY KEY IDENTITY(1,1),  -- Auto-incrementing PK
+    CustName CHAR(100),
+    Email CHAR(100)
+);
+
+CREATE TABLE Orders (
+    OrderId INT NOT NULL PRIMARY KEY IDENTITY(1,1),      -- Auto-incrementing PK
+    OrderDate DATETIME,
+    CustomersId INT,
+    FOREIGN KEY (CustomersId) REFERENCES Customers(CustomersId)
+);
+
+-- Basic JOIN examples
+
+-- Select all data from both tables individually
+SELECT * FROM Company;
+SELECT * FROM Salary;
+
+-- Inner join example
+SELECT * 
+FROM Salary
+JOIN Company 
+    ON Salary.Code = Company.id_code;
+
+-- Using aliases for better readability
+SELECT S.Code, C.first_name, C.age 
+FROM Salary AS S
+JOIN Company AS C
+    ON S.Code = C.id_code;
+```
